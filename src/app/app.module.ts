@@ -1,11 +1,7 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {PageModule} from './/pages/page.module'
-import { RouterModule } from '@angular/router';
+import {PageModule} from './/pages/page.module';
 
 
 @NgModule({
@@ -13,9 +9,7 @@ import { RouterModule } from '@angular/router';
     AppComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
+    AppRoutingModule,    
     PageModule
   ],
   providers: [],
