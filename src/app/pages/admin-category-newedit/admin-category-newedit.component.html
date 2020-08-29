@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-md-8 offset-2"> <!--iki birim sağa kaydır demek--> 
+    <h2>{{title}}</h2>
+   <form [formGroup] = "categoryForm"  class="form-container" (click)="onSubmit()">
+
+    <mat-form-field>
+
+        <input formControlName="name" matInput placeholder="Kategori Ismi"> <!--ts tarafında name adında form oluşturmuştuk-->
+
+        <mat-error *ngIf="categoryForm.controls.name.invalid">
+            
+            <div *ngIf="categoryForm.controls.name.hasError('required')">
+                Bu alan boş bırakılamaz
+            </div>
+            
+        </mat-error>
+
+    </mat-form-field>
+
+    <button class="mt-2" type="submit" mat-raised-button color="primary">{{btnText}}</button>
+
+   </form> 
+    </div>
+</div>
