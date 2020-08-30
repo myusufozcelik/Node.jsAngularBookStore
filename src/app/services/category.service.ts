@@ -22,5 +22,19 @@ getCategories() { // subscribe olunca bir şeyleri düzenlemek için pipe kullan
     // Burada status bilgisini alma, sadece data bilgisini al diyoruz.
 }
 
+getCategoryById(id:string) { 
+  // status geldiği için almıyoruz
+  return this.httpClient.get<any>(`${this.apiUrl}/${id}`)
+  .pipe(map(result=>result.data))
+}
+
+updateCategory(categoryId:string, category:Category) {
+  return this.httpClient.put<any>(`${this.apiUrl}/${categoryId}`,category)
+}
+
+deleteCategory(categoryId:string) {
+  return this.httpClient.delete<any>(`${this.apiUrl}/${categoryId}`)
+}
+
 }
  

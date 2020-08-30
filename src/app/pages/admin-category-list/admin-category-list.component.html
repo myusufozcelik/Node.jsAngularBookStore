@@ -1,1 +1,42 @@
-<p>admin-category-list works!</p>
+   
+   <a class="mt-2" mat-raised-button color="accent" routerLink="/admin/category">
+    <mat-icon>category</mat-icon>
+    Add Category
+    
+</a>
+   
+   <table style="width: 100%;" mat-table [dataSource]="datasource">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="no">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let category"> {{category.no}} </td>
+      </ng-container>
+  
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Category Name </th>
+        <td mat-cell *matCellDef="let category"> {{category.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let category">
+        <a mat-raised-button color="primary" [routerLink]="['/admin/category',category._id]">
+          <mat-icon>update</mat-icon>
+          Update</a>
+        <button class="ml-3" (click)="delete(category._id)" mat-raised-button color="warn">
+          <mat-icon>delete_forever</mat-icon>
+          Delete</button>
+      </td>
+      </ng-container>
+
+      
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    
+    

@@ -1,11 +1,11 @@
 <div class="row">
     <div class="col-md-8 offset-2"> <!--iki birim sağa kaydır demek--> 
     <h2>{{title}}</h2>
-   <form [formGroup] = "categoryForm"  class="form-container" (click)="onSubmit()">
+   <form [formGroup] = "categoryForm"  class="form-container" (ngSubmit)="onSubmit()">
 
     <mat-form-field>
 
-        <input formControlName="name" matInput placeholder="Kategori Ismi"> <!--ts tarafında name adında form oluşturmuştuk-->
+        <input formControlName="name" autocomplete="off" matInput placeholder="Kategori Ismi"> <!--ts tarafında name adında form oluşturmuştuk-->
 
         <mat-error *ngIf="categoryForm.controls.name.invalid">
             

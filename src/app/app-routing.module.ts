@@ -5,6 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
 import { AdminCategoryNeweditComponent } from './pages/admin-category-newedit/admin-category-newedit.component';
+import { AdminBookNeweditComponent } from './pages/admin-book-newedit/admin-book-newedit.component';
 
 
 const routes: Routes = [
@@ -21,8 +22,16 @@ const routes: Routes = [
     },
     {
       path:"category/:id", component:AdminCategoryNeweditComponent
-    }]
+    },
+    {
+      path:"book", component:AdminBookNeweditComponent
+    },
+    {
+      path:"book/:id", component:AdminBookNeweditComponent
+    }
+  ]
   }
+
 ];
 
 @NgModule({

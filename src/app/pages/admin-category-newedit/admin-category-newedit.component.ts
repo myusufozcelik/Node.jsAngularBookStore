@@ -29,10 +29,22 @@ export class AdminCategoryNeweditComponent implements OnInit {
 
 getCategoryId() {
   this.categoryId = this.route.snapshot.paramMap.get('id')
-  if(this.categoryId == null) {
+  if(this.categoryId == null) { // Ekleme işlemi için
     this.title = "Kategori Ekle";
     this.btnText = "Ekle";
     this.type = "add";
+  }
+  else { // update işlemi için
+    this.title = "Category Update"
+    this.btnText = "Update"
+    this.type = "update"
+    this.categoryService.getCategoryById(this.categoryId)
+    .subscribe(result=> {
+      this.category = result
+
+      // Update işleminde tıklanılan kategori ismi yazılı gelsin
+      this.categoryForm.controls.name.setValue(this.category.name)
+    })
   }
   this.categoryForm = new FormGroup({
     name: new FormControl("",Validators.required)
@@ -50,6 +62,13 @@ onSubmit() {
         this.router.navigateByUrl("/admin")   
       })
       // FormGrouptan tanımlanan yukarıdaki categoryFormu gidip json tipine değiştirip name alanını getirir
+    }
+    else if(this.type =="update") {
+      // update için submit işlemi;
+      this.categoryService.updateCategory(this.categoryId,this.categoryForm.value) 
+     .subscribe(result => {
+       this.router.navigateByUrl("/admin")
+     })
     }
   }
 }
