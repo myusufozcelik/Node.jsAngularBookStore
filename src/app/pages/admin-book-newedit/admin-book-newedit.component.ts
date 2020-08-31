@@ -65,14 +65,30 @@ categories:Category[];
 
   getBookId() {
     this.bookId = this.route.snapshot.paramMap.get("id")
-    if(this.book == null) {
+    if(this.bookId == null) {
       this.title = "Add Books"
       this.btnText = "Add";
       this.type = "add";
     }
     else {
-
       // update kısmı
+
+      this.title = "Book Update"
+      this.btnText = "Update"
+      this.type = "update"
+
+      this.bookService.getBookById(this.bookId).subscribe(result=> {
+        this.book = result;
+        // Kitap bilgilerini servisten alıp title kısmına yazdırdık
+        this.bookForm.controls.title.setValue(this.book.title)
+        this.bookForm.controls.author.setValue(this.book.author)
+        this.bookForm.controls.price.setValue(this.book.price)
+        this.bookForm.controls.stock.setValue(this.book.stock)
+        this.bookForm.controls.picture.setValue(this.book.picture)
+        this.bookForm.controls.categoryBy.setValue(this.book.categoryBy);
+
+      })
+
     }
   }
 
@@ -91,10 +107,36 @@ categories:Category[];
           .subscribe(result=> {
             this.router.navigateByUrl("/admin");
           })
-          console.log(this.bookService)
+          
       }
       else {
         // update
+
+        // choose file seçilmişse ya da seçilmemişse diye iki durum ele alalım
+        if(this.formData==null) {
+          // resim seçmemişse
+          this.bookService.updateBook(this.book._id,this.bookForm.value) // book._id ngOnInıt'den geliyor
+          .subscribe(result=> this.router.navigateByUrl("/admin"))
+        }
+
+        else {
+          // /kitap seçilmişse
+
+          this.bookService.saveBookImage(this.formData)
+          .pipe(map(result=>{
+            // picture kısmını yakalayıp dolduralım  
+            this.bookForm.controls.picture.setValue(result.url)
+           
+          }),
+          
+          mergeMap(()=>
+          this.bookService.updateBook(this.book._id,this.bookForm.value)))
+          .subscribe(result=> {
+            this.router.navigateByUrl("/admin");
+          })
+
+        }
+
       }
     }
   }

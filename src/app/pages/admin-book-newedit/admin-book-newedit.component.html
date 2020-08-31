@@ -20,18 +20,54 @@
 
             <mat-form-field>
                 <input autocomplete="off"  matInput formControlName="title" placeholder="Book Title" />
+            
+            <mat-error *ngIf="this.bookForm.controls.title.invalid">
+               
+                <div *ngIf="this.bookForm.controls.title.hasError('required')">
+                    Bu alan boş bırakılamaz
+                </div>
+
+            </mat-error>
+
             </mat-form-field>
 
             <mat-form-field>
                 <input autocomplete="off"   matInput formControlName="author" placeholder="Author" />
+        
+                <mat-error *ngIf="this.bookForm.controls.author.invalid">
+               
+                    <div *ngIf="this.bookForm.controls.author.hasError('required')">
+                        Bu alan boş bırakılamaz
+                    </div>
+    
+                </mat-error>
+
             </mat-form-field>
 
             <mat-form-field>
-                <input autocomplete="off"   matInput formControlName="price" placeholder="Price" />
+                <input autocomplete="off"   matInput type="number" formControlName="price" placeholder="Price" />
+
+                <mat-error *ngIf="this.bookForm.controls.price.invalid">
+               
+                    <div *ngIf="this.bookForm.controls.price.hasError('required')">
+                        Bu alan boş bırakılamaz
+                    </div>
+    
+                </mat-error>
+
             </mat-form-field>
 
             <mat-form-field>
-                <input autocomplete="off"   matInput formControlName="stock" placeholder="Stock" />
+                <input autocomplete="off"   matInput type="number" formControlName="stock" placeholder="Stock" />
+
+                <mat-error *ngIf="this.bookForm.controls.stock.invalid">
+               
+                    <div *ngIf="this.bookForm.controls.stock.hasError('required')">
+                        Bu alan boş bırakılamaz
+                    </div>
+    
+                </mat-error>
+
             </mat-form-field>
 
             <button mat-raised-button color="primary" type="submit" class="mt-2">
