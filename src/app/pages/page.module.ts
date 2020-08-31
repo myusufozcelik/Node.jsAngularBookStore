@@ -18,10 +18,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminCategoryListComponent } from './admin-category-list/admin-category-list.component';
 import { AdminBookNeweditComponent } from './admin-book-newedit/admin-book-newedit.component';
+import { AdminBookListComponent } from '../pages/admin-book-list/admin-book-list.component';
 
 
 @NgModule({
-  declarations: [MainLayoutComponent,HomeComponent,HeaderComponent,AdminLayoutComponent, AdminHomeComponent,AdminCategoryNeweditComponent, AdminCategoryListComponent, AdminBookNeweditComponent],
+  declarations: [MainLayoutComponent,HomeComponent,HeaderComponent,
+    AdminLayoutComponent, AdminHomeComponent,AdminCategoryNeweditComponent, 
+    AdminCategoryListComponent, AdminBookNeweditComponent, AdminBookListComponent
+  ],
   imports: [
     CommonModule,
     AppRoutingModule,
