@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Book } from '../models/book';
 import { map } from 'rxjs/operators';
+import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,10 @@ updateBook(bookId:string, book:Book) {
 
 saveBookImage(image) {
   return this.httpClient.post<any>(`${this.apiUrl}/saveImage`,image)
+}
+
+deleteBook(bookId:string) {
+  return this.httpClient.delete<any>(`${this.apiUrl}/${bookId}`)
 }
 
 }

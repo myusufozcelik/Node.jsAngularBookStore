@@ -35,6 +35,16 @@ categories:Category[];
      
   }
 
+ // html kısmında uzun uzun this.bookForm.controls.categoryBy yerine 
+ // bunu ekleyince sadece category yazmamız yeterli
+  get category() {
+    return this.bookForm.get('categoryBy')
+  }
+
+  get pictureFile() {
+    return this.bookForm.get('pictureFile')
+  }
+
   upload(files) { 
     // eklenen dosyalardan 1. al
     
@@ -52,6 +62,7 @@ categories:Category[];
     })
   }
 
+
   bookFormGroup() {
     this.bookForm = new FormGroup({
       title: new FormControl("",Validators.required),
@@ -59,7 +70,8 @@ categories:Category[];
       price: new FormControl("",Validators.required),
       stock: new FormControl("",Validators.required),
        picture: new FormControl(""),
-      categoryBy: new FormControl("")
+      categoryBy: new FormControl("",Validators.required),
+      pictureFile : new FormControl("",Validators.required)
     })
   }
 
@@ -82,10 +94,10 @@ categories:Category[];
         // Kitap bilgilerini servisten alıp title kısmına yazdırdık
         this.bookForm.controls.title.setValue(this.book.title)
         this.bookForm.controls.author.setValue(this.book.author)
-        this.bookForm.controls.price.setValue(this.book.price)
-        this.bookForm.controls.stock.setValue(this.book.stock)
+        this.bookForm.controls.price.setValue(this.book.price) // this.bookForm.get('price').setValue() şeklinde de yazabiliriz.
+        this.bookForm.controls.stock.setValue(this.book.stock) 
         this.bookForm.controls.picture.setValue(this.book.picture)
-        this.bookForm.controls.categoryBy.setValue(this.book.categoryBy);
+        this.bookForm.controls.categoryBy.setValue(this.book.categoryBy);      
 
       })
 

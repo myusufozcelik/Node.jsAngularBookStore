@@ -37,5 +37,26 @@ export class AdminBookListComponent implements OnInit {
     })
   }
 
+  delete(bookId:string) {
+    this.bookService.deleteBook(bookId).subscribe(result=> {
+      
+      if(result.status=="success") {
+        let book = this.books.filter(x=> x._id==bookId)[0] // birden fazla gelebilir. O yüzden 0. indextekini alırız
+        
+        let index = this.books.indexOf(book);
+        
+        this.books.splice(index,1)
+        // datayı sildik şimdi datasource yi güncellememiz lazım.(tabloya veri datasourceden gidiyor)
+        this.datasource = new MatTableDataSource<Book>(this.books);
+
+      }
+
+      else {
+          alert("An error occurred during the deletion") 
+      }
+
+    })
+  }
+
 
 }

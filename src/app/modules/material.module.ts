@@ -9,6 +9,7 @@ import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatIconModule} from '@angular/material/icon';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatCardModule, MatCard} from '@angular/material/card';
 
 
 
@@ -25,13 +26,14 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatPaginatorModule,
     MatTableModule,
     MatIconModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatCardModule
   ], 
   // MatToolbarModule modulünü diğer sayfalarda kullanabilmesi için export etmemiz lazım
   // app.module içerisine yazsaydık gerek yoktu çünkü ana modulumüz orasıydı.
   // Kullanacak olan sayfaların import etmesi gerekli!!!
   exports:[MatToolbarModule,MatButtonModule,MatTabsModule,MatIconModule,
     MatFormFieldModule,MatInputModule,MatTableModule,MatPaginatorModule,
-    MatAutocompleteModule] 
+    MatAutocompleteModule, MatCardModule] 
 })
 export class MaterialModule { }

@@ -5,3 +5,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .form-container>* {
 	width: 100%;
 }
+
+
+.cardBook {
+	width: 250px;
+	margin: 0px 10px 10px 10px;
+	float: left;
+}
+
+.cardBook:hover {
+	box-shadow: 5px 10px 18px #888888;
+}
+
+.cardbook img {
+	width: 230px;
+	height: 350px;
+}

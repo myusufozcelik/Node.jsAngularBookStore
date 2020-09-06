@@ -1,11 +1,21 @@
 <div class="row">
     <div class="cal-md-8 offset-2">
         <h2>{{title}}</h2>
-        <form [formGroup]="bookForm" class="form-container" (ngSubmit)="onSubmit()" >
+        <form #myForm="ngForm" [formGroup]="bookForm" class="form-container" (ngSubmit)="onSubmit()" >
 
             <mat-form-field>
                 <input matInput type="text" placeholder="Select Category" formControlName="categoryBy" [matAutocomplete]="auto">
             
+
+                <mat-error *ngIf="category.invalid">
+               
+                    <div *ngIf="category.hasError('required')">
+                        Bu alan boş bırakılamaz
+                    </div>
+    
+                </mat-error>
+
+
                 <mat-autocomplete #auto="matAutocomplete"  [displayWith]="displayCategoryName">
 
                     <mat-option *ngFor="let item of categories" [value]="item">{{item.name}}</mat-option>
@@ -15,7 +25,16 @@
             </mat-form-field>
 
             <div>
-                <input type="file" (change)="upload($event)"/>
+                <input formControlName="pictureFile" type="file" (change)="upload($event)"/>
+                
+                <div *ngIf="pictureFile.invalid && myForm.submitted">
+
+                    <span *ngIf="pictureFile.hasError('required')">
+                        Please choose a picture
+                    </span>
+                        
+                </div>
+
             </div>
 
             <mat-form-field>
