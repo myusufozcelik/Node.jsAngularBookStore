@@ -19,12 +19,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminCategoryListComponent } from './admin-category-list/admin-category-list.component';
 import { AdminBookNeweditComponent } from './admin-book-newedit/admin-book-newedit.component';
 import { AdminBookListComponent } from '../pages/admin-book-list/admin-book-list.component';
+import { CategoryMenuComponent } from '../components/category-menu/category-menu.component';
+import { BooksComponent } from './books/books.component';
 
 
 @NgModule({
   declarations: [MainLayoutComponent,HomeComponent,HeaderComponent,
     AdminLayoutComponent, AdminHomeComponent,AdminCategoryNeweditComponent, 
-    AdminCategoryListComponent, AdminBookNeweditComponent, AdminBookListComponent
+    AdminCategoryListComponent, AdminBookNeweditComponent, AdminBookListComponent,
+    CategoryMenuComponent,
+    BooksComponent
   ],
   imports: [
     CommonModule,

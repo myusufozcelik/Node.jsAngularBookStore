@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2>Book Detail</h2>
+        <hr/>
+    </div>
+
+    <div class="col-md-4">
+        <img style="width: 300px;" [src]="book.picture">
+    </div>
+
+    <div class="col-md-8">
+
+        <mat-list style="font-size: 14px; font-weight: bold; margin-left: 10px;">
+        
+        <mat-list-item>
+            <span class="book-detail-text">Title:</span> {{book.title}}
+        </mat-list-item>
+
+        <mat-list-item>
+            <span class="book-detail-text">Author:</span> {{book.author}}
+        </mat-list-item>
+
+        <mat-list-item>
+            <span class="book-detail-text">Price:</span> {{book.price | currency}}  
+        </mat-list-item>
+
+        <mat-list-item>
+            <span class="book-detail-text">Stock:</span> {{book.stock}}
+        </mat-list-item>
+
+        <mat-list-item>
+            <span class="book-detail-text">Category:</span> {{book.categoryBy?.name}}
+        </mat-list-item>
+        
+        </mat-list>
+
+
+    </div>
+
+
+</div>

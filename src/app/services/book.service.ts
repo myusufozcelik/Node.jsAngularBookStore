@@ -3,7 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Book } from '../models/book';
 import { map } from 'rxjs/operators';
-import { throwToolbarMixedModesError } from '@angular/material/toolbar';
+
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +22,11 @@ getBooks() {
 getBookById(id:string) {
   return this.httpClient.get<any>(`${this.apiUrl}/${id}`)
   .pipe(map(result=>result.data))
+}
+
+getBooksByCategoryId(categoryId:string) {  // books old. için enviroment tarafından alıp books ile yazdık
+  return this.httpClient.get<any>(`${environment.baseurl}/books/${categoryId}`)
+  .pipe(map(result=>result.data)); // resultın sadece datasını al
 }
 
 
